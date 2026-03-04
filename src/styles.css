@@ -15,11 +15,20 @@ margin:auto;
 padding:40px 20px;
 }
 
+/* HERO SECTION */
+
 .hero
 {
-background:#111;
+background:
+linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0");
+
+background-size:cover;
+background-position:center;
+
 color:white;
-padding:120px 20px;
+
+padding:160px 20px;
 }
 
 .hero h1
@@ -34,6 +43,13 @@ font-weight:400;
 margin-bottom:20px;
 }
 
+.hero p
+{
+opacity:0.8;
+}
+
+/* CTA BUTTON */
+
 .cta-button
 {
 display:inline-block;
@@ -41,46 +57,187 @@ background:#ff6b00;
 color:white;
 padding:15px 30px;
 font-size:18px;
-text-decoration:none;
+border:none;
 border-radius:6px;
-margin-top:20px;
+cursor:pointer;
+
+transition:all 0.25s ease;
 }
+
+.cta-button:hover
+{
+transform:scale(1.05);
+background:#ff7a1a;
+}
+
+/* SIGNUP FORM */
+
+.signup-container
+{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+margin-top:30px;
+}
+
+/* EMAIL INPUT INITIAL STATE */
+
+.email-input
+{
+width:0;
+opacity:0;
+
+padding:14px;
+
+border-radius:6px;
+border:none;
+
+font-size:16px;
+
+background:#ffffff;
+color:#333;
+
+transform:translateX(-30px);
+
+transition:all 0.35s ease;
+
+pointer-events:none;
+}
+
+/* EMAIL INPUT WHEN SHOWN */
+
+.email-input.show
+{
+width:260px;
+opacity:1;
+
+transform:translateX(0);
+
+pointer-events:auto;
+}
+
+/* FEATURES (MIDDLE SECTION) */
 
 .features
 {
-background:white;
-padding:60px 20px;
+background:
+linear-gradient(
+rgba(159,180,169,0.82),
+rgba(159,180,169,0.82)
+),
+url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+
+background-size:cover;
+background-position:center;
+
+padding:120px 20px;
+
+color:#1f2d29;
 }
+
+/* HOW IT WORKS TITLE */
+
+.features h2
+{
+font-size:44px;
+margin-bottom:60px;
+font-weight:700;
+letter-spacing:0.5px;
+}
+
+/* GRID LAYOUT */
 
 .feature-grid
 {
 display:flex;
-gap:30px;
+gap:60px;
 justify-content:center;
 flex-wrap:wrap;
 }
 
+/* EACH FEATURE */
+
 .feature
 {
-width:250px;
+width:260px;
 }
+
+
+/* PRICING SECTION */
 
 .pricing
 {
-background:#f3f3f3;
-padding:60px 20px;
+background:
+linear-gradient(
+rgba(0,0,0,0.55),
+rgba(0,0,0,0.55)
+),
+url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5");
+
+background-size:cover;
+background-position:center;
+
+padding:100px 20px;
+
+color:white;
 }
 
 .price
 {
-font-size:48px;
+font-size:64px;
 font-weight:bold;
-margin:20px 0;
+margin:25px 0;
 }
+
+/* FOOTER */
 
 footer
 {
 padding:20px;
 background:#111;
 color:white;
+}
+
+/* MOBILE IMPROVEMENT */
+
+@media (max-width:600px)
+{
+
+.hero h1
+{
+font-size:34px;
+}
+
+.hero h2
+{
+font-size:20px;
+}
+
+.signup-container
+{
+flex-direction:column;
+gap:10px;
+}
+
+.email-input.show
+{
+width:220px;
+}
+
+.feature-grid
+{
+gap:40px;
+}
+
+.features h2
+{
+font-size:28px;
+}
+
+.feature p
+{
+font-size:16px;
+}
+
 }

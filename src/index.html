@@ -25,9 +25,20 @@
         Just arrived in Yerevan? Avoid tourist traps and eat where locals eat.
         </p>
 
-        <a class="cta-button" href="https://tally.so/r/your-form-id">
-            Get Early Access
-        </a>
+        <div class="signup-container">
+
+            <input
+                id="emailInput"
+                class="email-input"
+                type="email"
+                placeholder="Enter your email"
+            />
+
+            <button id="ctaButton" class="cta-button">
+                Get Early Access
+            </button>
+
+        </div>
 
     </div>
 
@@ -90,7 +101,44 @@ Reserve Your Pass
 <p>© 2026 Yere Dine</p>
 
 </footer>
+<script>
 
+const button = document.getElementById("ctaButton");
+const emailInput = document.getElementById("emailInput");
+
+let activated = false;
+
+button.addEventListener("click", function(){
+
+    if(!activated){
+
+        emailInput.classList.add("show");
+
+        button.textContent = "Submit";
+
+        activated = true;
+
+        emailInput.focus();
+
+    }
+    else{
+
+        const email = emailInput.value;
+
+        if(email.length < 5){
+            alert("Please enter a valid email");
+            return;
+        }
+
+        alert("Thanks! We'll notify you when Yere Dine launches.");
+
+        emailInput.value = "";
+
+    }
+
+});
+
+</script>
 </body>
 
 </html>

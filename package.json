@@ -1,0 +1,38 @@
+{
+  "name": "yere_dine",
+  "version": "1.0.0",
+  "description": "Landing page for Yere Dine - Yerevan tourist dining pass",
+  "main": "index.js",
+  "type": "commonjs",
+
+  "scripts": {
+    "dev": "live-server --port=3000 --open=src/index.html",
+    "start": "live-server --port=3000 --open=src/index.html",
+    "test": "echo \"No tests configured\""
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamBarseghyan99/yere_dine.git"
+  },
+
+  "keywords": [
+    "yerevan",
+    "tourism",
+    "restaurant",
+    "landing-page"
+  ],
+
+  "author": "Samvel Barseghyan",
+  "license": "ISC",
+
+  "bugs": {
+    "url": "https://github.com/SamBarseghyan99/yere_dine/issues"
+  },
+
+  "homepage": "https://github.com/SamBarseghyan99/yere_dine#readme",
+
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}
