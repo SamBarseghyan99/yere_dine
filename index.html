@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,38 +10,54 @@
 
 <link rel="stylesheet" href="styles.css">
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script>
+<script>
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'YOUR_GA_ID');
+
+</script>
+
 </head>
 
 <body>
 
 <header class="hero">
 
-    <div class="container">
+<div class="container">
 
-        <h1>Yere Dine</h1>
+<h1>Yere Dine</h1>
 
-        <h2>Discover the best restaurants in Yerevan with exclusive traveler perks.</h2>
+<h2>Discover the best restaurants in Yerevan with exclusive traveler perks.</h2>
 
-        <p>
-        Just arrived in Yerevan? Avoid tourist traps and eat where locals eat.
-        </p>
+<p>
+Just arrived in Yerevan? Avoid tourist traps and eat where locals eat.
+</p>
 
-        <div class="signup-container">
+<div class="signup-container">
 
-            <input
-                id="emailInput"
-                class="email-input"
-                type="email"
-                placeholder="Enter your email"
-            />
+<input
+id="emailInput"
+class="email-input"
+type="email"
+placeholder="Enter your email"
+/>
 
-            <button id="ctaButton" class="cta-button">
-                Get Early Access
-            </button>
+<button id="ctaButton" class="cta-button">
+Get Early Access
+</button>
 
-        </div>
+</div>
 
-    </div>
+<p class="trust-text">
+Join early members getting exclusive restaurant deals in Yerevan. No spam.
+</p>
+
+</div>
 
 </header>
 
@@ -101,44 +118,59 @@ Reserve Your Pass
 <p>© 2026 Yere Dine</p>
 
 </footer>
+
+
 <script>
 
 const button = document.getElementById("ctaButton");
 const emailInput = document.getElementById("emailInput");
 
-let activated = false;
+button.addEventListener("click", async function(){
 
-button.addEventListener("click", function(){
+const email = emailInput.value.trim();
 
-    if(!activated){
+if(!email || !email.includes("@")){
 
-        emailInput.classList.add("show");
+alert("Please enter a valid email");
+return;
 
-        button.textContent = "Submit";
+}
 
-        activated = true;
+try{
 
-        emailInput.focus();
+await fetch("YOUR_TALLY_ENDPOINT",{
 
-    }
-    else{
+method:"POST",
 
-        const email = emailInput.value;
+headers:{
+"Content-Type":"application/json"
+},
 
-        if(email.length < 5){
-            alert("Please enter a valid email");
-            return;
-        }
+body: JSON.stringify({
+email: email
+})
 
-        alert("Thanks! We'll notify you when Yere Dine launches.");
+});
 
-        emailInput.value = "";
+emailInput.value="";
 
-    }
+alert("Thanks! We'll notify you when Yere Dine launches.");
+
+gtag('event','email_signup',{
+event_category:'engagement',
+event_label:'landing_page'
+});
+
+}catch(error){
+
+console.error(error);
+alert("Something went wrong. Please try again.");
+
+}
 
 });
 
 </script>
-</body>
 
+</body>
 </html>
