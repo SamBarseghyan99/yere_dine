@@ -10,21 +10,10 @@
 
 <link rel="stylesheet" href="styles.css">
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script>
-<script>
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'YOUR_GA_ID');
-
-</script>
-
 </head>
 
 <body>
+
 
 <header class="hero">
 
@@ -32,10 +21,10 @@ gtag('config', 'YOUR_GA_ID');
 
 <h1>Yere Dine</h1>
 
-<h2>Discover the best restaurants in Yerevan with exclusive traveler perks.</h2>
+<h2>Get restaurant discounts in Yerevan before anyone else</h2>
 
 <p>
-Just arrived in Yerevan? Avoid tourist traps and eat where locals eat.
+Join the early access list and discover trusted restaurants with exclusive traveler perks.
 </p>
 
 <div class="signup-container">
@@ -53,8 +42,21 @@ Get Early Access
 
 </div>
 
-<p class="trust-text">
-Join early members getting exclusive restaurant deals in Yerevan. No spam.
+<div class="checkbox-container" id="checkboxContainer">
+
+<label>
+<input type="checkbox" id="earlyAccessCheckbox">
+Send me early access to restaurant discounts in Yerevan
+</label>
+
+</div>
+
+<p class="trust-line">
+We respect your privacy. Only restaurant deals.
+</p>
+
+<p class="social-proof">
+Join <strong>300+ travelers</strong> already waiting for Yerevan restaurant deals.
 </p>
 
 </div>
@@ -62,11 +64,12 @@ Join early members getting exclusive restaurant deals in Yerevan. No spam.
 </header>
 
 
+
 <section class="features">
 
 <div class="container">
 
-<h3>How It Works</h3>
+<h2>How It Works</h2>
 
 <div class="feature-grid">
 
@@ -92,6 +95,87 @@ Join early members getting exclusive restaurant deals in Yerevan. No spam.
 </section>
 
 
+<!--
+<section class="restaurants">
+
+<div class="container">
+
+<h2>Featured Restaurants</h2>
+
+<p class="restaurants-subtitle">
+Examples of places you may unlock with Yere Dine.
+</p>
+
+<div class="restaurant-grid">
+
+<div class="restaurant-card">
+
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
+
+<h4>Lavash</h4>
+
+<p>Traditional Armenian cuisine loved by locals.</p>
+
+</div>
+
+
+<div class="restaurant-card">
+
+<img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
+
+<h4>Sherep</h4>
+
+<p>Modern Armenian dining experience in the city center.</p>
+
+</div>
+
+
+<div class="restaurant-card">
+
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947">
+
+<h4>Katsin</h4>
+
+<p>Cozy atmosphere with modern Armenian flavors.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+-->
+
+<section class="benefits">
+
+<div class="container">
+
+<h2>Early Members Will Get</h2>
+
+<div class="benefits-grid">
+
+<div class="benefit">
+🍽️ Exclusive restaurant discounts
+</div>
+
+<div class="benefit">
+🔥 Invitations to new restaurant openings
+</div>
+
+<div class="benefit">
+⭐ Special deals available only to subscribers
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
 <section class="pricing">
 
 <div class="container">
@@ -113,6 +197,7 @@ Reserve Your Pass
 </section>
 
 
+
 <footer>
 
 <p>© 2026 Yere Dine</p>
@@ -120,57 +205,55 @@ Reserve Your Pass
 </footer>
 
 
+
 <script>
 
 const button = document.getElementById("ctaButton");
 const emailInput = document.getElementById("emailInput");
+const checkbox = document.getElementById("earlyAccessCheckbox");
+const checkboxContainer = document.getElementById("checkboxContainer");
 
-button.addEventListener("click", async function(){
+let activated = false;
 
-const email = emailInput.value.trim();
+button.addEventListener("click", function(){
 
-if(!email || !email.includes("@")){
+    if(!activated){
 
-alert("Please enter a valid email");
-return;
+        emailInput.classList.add("show");
+        checkboxContainer.classList.add("show");
 
-}
+        button.textContent = "Submit";
 
-try{
+        activated = true;
 
-await fetch("YOUR_TALLY_ENDPOINT",{
+        emailInput.focus();
 
-method:"POST",
+    }
+    else{
 
-headers:{
-"Content-Type":"application/json"
-},
+        const email = emailInput.value;
 
-body: JSON.stringify({
-email: email
-})
+        if(email.length < 5){
+            alert("Please enter a valid email");
+            return;
+        }
 
-});
+        if(!checkbox.checked){
+            alert("Please confirm early access.");
+            return;
+        }
 
-emailInput.value="";
+        alert("Thanks! We'll notify you when Yere Dine launches.");
 
-alert("Thanks! We'll notify you when Yere Dine launches.");
+        emailInput.value = "";
+        checkbox.checked = false;
 
-gtag('event','email_signup',{
-event_category:'engagement',
-event_label:'landing_page'
-});
-
-}catch(error){
-
-console.error(error);
-alert("Something went wrong. Please try again.");
-
-}
+    }
 
 });
 
 </script>
 
 </body>
+
 </html>
