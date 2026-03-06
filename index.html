@@ -243,14 +243,27 @@ button.addEventListener("click", function(){
             return;
         }
 
+fetch("https://script.google.com/macros/s/AKfycbwxG56SL376uKnIonfVtBI9cRnjPgIF-h2sO5HvIwNiV77gp0g9AckfA4IfYD81SbC/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+        "Content-Type": "text/plain"
+    },
+    body: JSON.stringify({
+        email: email,
+        consent: checkbox.checked,
+        page: window.location.href
+    })
+});
+
         alert("Thanks! We'll notify you when Yere Dine launches.");
 
         emailInput.value = "";
         checkbox.checked = false;
 
-    }
+            }
 
-});
+        });
 
 </script>
 
