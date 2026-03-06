@@ -15,7 +15,9 @@ margin:auto;
 padding:40px 20px;
 }
 
-/* HERO SECTION */
+
+
+/* HERO */
 
 .hero
 {
@@ -48,7 +50,9 @@ margin-bottom:20px;
 opacity:0.8;
 }
 
-/* CTA BUTTON */
+
+
+/* BUTTON */
 
 .cta-button
 {
@@ -70,21 +74,25 @@ transform:scale(1.05);
 background:#ff7a1a;
 }
 
-/* SIGNUP FORM */
+
+
+/* SIGNUP */
 
 .signup-container
 {
+position:relative;
+
 display:flex;
 justify-content:center;
 align-items:center;
-gap:12px;
+
 margin-top:30px;
 }
 
-/* EMAIL INPUT INITIAL STATE */
-
 .email-input
 {
+position:absolute;
+
 width:0;
 opacity:0;
 
@@ -98,26 +106,79 @@ font-size:16px;
 background:#ffffff;
 color:#333;
 
-transform:translateX(-30px);
+transform:translateX(-140px);
 
 transition:all 0.35s ease;
 
 pointer-events:none;
 }
 
-/* EMAIL INPUT WHEN SHOWN */
-
 .email-input.show
 {
+position:static;
+
 width:260px;
 opacity:1;
 
 transform:translateX(0);
 
 pointer-events:auto;
+
+margin-right:12px;
+}
+.checkbox-container
+{
+margin-top:15px;
+font-size:14px;
+color:white;
+opacity:0;
+
+transform:translateY(-10px);
+
+transition:all 0.35s ease;
+
+pointer-events:none;
 }
 
-/* FEATURES (MIDDLE SECTION) */
+.checkbox-container.show
+{
+opacity:0.9;
+
+transform:translateY(0);
+
+pointer-events:auto;
+}
+
+.checkbox-container input
+{
+margin-right:8px;
+transform:scale(1.1);
+cursor:pointer;
+}
+
+.checkbox-container label
+{
+cursor:pointer;
+}
+/* TRUST */
+
+.trust-line
+{
+margin-top:15px;
+font-size:14px;
+opacity:0.85;
+}
+
+.social-proof
+{
+margin-top:10px;
+font-size:16px;
+opacity:0.9;
+}
+
+
+
+/* FEATURES */
 
 .features
 {
@@ -136,17 +197,11 @@ padding:120px 20px;
 color:#1f2d29;
 }
 
-/* HOW IT WORKS TITLE */
-
 .features h2
 {
 font-size:44px;
 margin-bottom:60px;
-font-weight:700;
-letter-spacing:0.5px;
 }
-
-/* GRID LAYOUT */
 
 .feature-grid
 {
@@ -156,15 +211,93 @@ justify-content:center;
 flex-wrap:wrap;
 }
 
-/* EACH FEATURE */
-
 .feature
 {
 width:260px;
 }
 
 
-/* PRICING SECTION */
+
+/* RESTAURANTS */
+
+.restaurants
+{
+padding:120px 20px;
+background:white;
+}
+
+.restaurant-grid
+{
+display:flex;
+gap:40px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.restaurant-card
+{
+width:260px;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.restaurant-card img
+{
+width:100%;
+height:170px;
+object-fit:cover;
+}
+
+.restaurant-card h4
+{
+margin:15px 0 5px;
+}
+
+.restaurant-card p
+{
+padding:0 15px 20px;
+font-size:15px;
+}
+
+
+
+/* BENEFITS */
+
+.benefits
+{
+padding:100px 20px;
+background:#fafafa;
+}
+
+.benefits h2
+{
+font-size:36px;
+margin-bottom:50px;
+}
+
+.benefits-grid
+{
+display:flex;
+gap:40px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.benefit
+{
+background:white;
+padding:20px 30px;
+border-radius:10px;
+font-size:18px;
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+
+
+/* PRICING */
 
 .pricing
 {
@@ -190,6 +323,8 @@ font-weight:bold;
 margin:25px 0;
 }
 
+
+
 /* FOOTER */
 
 footer
@@ -199,7 +334,9 @@ background:#111;
 color:white;
 }
 
-/* MOBILE IMPROVEMENT */
+
+
+/* MOBILE */
 
 @media (max-width:600px)
 {
@@ -235,9 +372,9 @@ gap:40px;
 font-size:28px;
 }
 
-.feature p
+.restaurant-grid
 {
-font-size:16px;
+gap:25px;
 }
 
 }

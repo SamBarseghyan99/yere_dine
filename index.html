@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,47 +10,199 @@
 
 <link rel="stylesheet" href="styles.css">
 
+<style>
+
+body{
+font-family: Arial, Helvetica, sans-serif;
+margin:0;
+padding:0;
+background:#fafafa;
+color:#333;
+text-align:center;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* HERO */
+
+.hero{
+background:
+linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0");
+
+background-size:cover;
+background-position:center;
+color:white;
+padding:160px 20px;
+}
+
+/* SIGNUP */
+
+.signup-container{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+margin-top:25px;
+}
+
+.email-input{
+width:0;
+opacity:0;
+padding:14px;
+border-radius:6px;
+border:none;
+outline:none;
+transition:all 0.4s ease;
+}
+
+.email-input.show{
+width:240px;
+opacity:1;
+}
+
+.cta-button{
+background:#ff6b00;
+color:white;
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+transition:all 0.25s ease;
+}
+
+.cta-button:hover{
+transform:translateY(-2px);
+}
+
+.trust-line{
+margin-top:20px;
+opacity:0.8;
+}
+
+.social-proof{
+margin-top:10px;
+opacity:0.9;
+}
+
+/* FEATURES */
+
+.features{
+padding:60px 20px;
+background:white;
+}
+
+.feature-grid{
+display:flex;
+gap:30px;
+justify-content:center;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.feature{
+max-width:220px;
+}
+
+/* BENEFITS */
+
+.benefits{
+padding:60px 20px;
+}
+
+.benefits-grid{
+display:flex;
+gap:25px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:25px;
+}
+
+.benefit{
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* PRICING */
+
+.pricing{
+padding:60px 20px;
+background:white;
+}
+
+.price{
+font-size:36px;
+font-weight:bold;
+margin:10px 0;
+}
+
+/* FOOTER */
+
+footer{
+padding:30px;
+opacity:0.7;
+}
+
+</style>
+
 </head>
 
 <body>
 
+
 <header class="hero">
 
-    <div class="container">
+<div class="container">
 
-        <h1>Yere Dine</h1>
+<h1>Yere Dine</h1>
 
-        <h2>Discover the best restaurants in Yerevan with exclusive traveler perks.</h2>
+<h2>Get restaurant discounts in Yerevan before anyone else</h2>
 
-        <p>
-        Just arrived in Yerevan? Avoid tourist traps and eat where locals eat.
-        </p>
+<p>
+Join the early access list and discover trusted restaurants with exclusive traveler perks.
+</p>
 
-        <div class="signup-container">
+<div class="signup-container">
 
-            <input
-                id="emailInput"
-                class="email-input"
-                type="email"
-                placeholder="Enter your email"
-            />
+<input
+id="emailInput"
+class="email-input"
+type="email"
+placeholder="Enter your email"
+/>
 
-            <button id="ctaButton" class="cta-button">
-                Get Early Access
-            </button>
+<button id="ctaButton" class="cta-button">
+Get Early Access
+</button>
 
-        </div>
+</div>
 
-    </div>
+<p class="trust-line">
+We respect your privacy. Only restaurant deals.
+</p>
+
+<p class="social-proof">
+Join <strong>300+ travelers</strong> already waiting for Yerevan restaurant deals.
+</p>
+
+</div>
 
 </header>
+
 
 
 <section class="features">
 
 <div class="container">
 
-<h3>How It Works</h3>
+<h2>How It Works</h2>
 
 <div class="feature-grid">
 
@@ -75,6 +228,35 @@
 </section>
 
 
+
+<section class="benefits">
+
+<div class="container">
+
+<h2>Early Members Will Get</h2>
+
+<div class="benefits-grid">
+
+<div class="benefit">
+🍽️ Exclusive restaurant discounts
+</div>
+
+<div class="benefit">
+🔥 Invitations to new restaurant openings
+</div>
+
+<div class="benefit">
+⭐ Special deals available only to subscribers
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
 <section class="pricing">
 
 <div class="container">
@@ -96,11 +278,15 @@ Reserve Your Pass
 </section>
 
 
+
 <footer>
 
 <p>© 2026 Yere Dine</p>
 
 </footer>
+
+
+
 <script>
 
 const button = document.getElementById("ctaButton");
@@ -110,35 +296,51 @@ let activated = false;
 
 button.addEventListener("click", function(){
 
-    if(!activated){
+if(!activated){
 
-        emailInput.classList.add("show");
+emailInput.classList.add("show");
 
-        button.textContent = "Submit";
+button.textContent = "Submit";
 
-        activated = true;
+activated = true;
 
-        emailInput.focus();
+emailInput.focus();
 
-    }
-    else{
+return;
+}
 
-        const email = emailInput.value;
+const email = emailInput.value;
 
-        if(email.length < 5){
-            alert("Please enter a valid email");
-            return;
-        }
+if(!email || email.length < 5){
+alert("Please enter a valid email");
+return;
+}
 
-        alert("Thanks! We'll notify you when Yere Dine launches.");
+fetch("https://script.google.com/macros/s/AKfycbwxG56SL376uKnlonfVtBI9cRnjPglF-h2sO5HvllwNiV77gp0g9AckfA4IfYD81SbC/exec", {
+method:"POST",
+mode:"no-cors",
+headers:{
+"Content-Type":"text/plain"
+},
+body:JSON.stringify({
+email:email,
+page:window.location.href
+})
+});
 
-        emailInput.value = "";
+alert("Thanks! We'll notify you when Yere Dine launches.");
 
-    }
+emailInput.value="";
 
 });
 
-</script>
-</body>
+emailInput.addEventListener("keypress",function(e){
+if(e.key==="Enter"){
+button.click();
+}
+});
 
+</script>
+
+</body>
 </html>
